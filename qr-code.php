@@ -39,7 +39,8 @@ if(isset($_POST['submit'])){
     echo $result->getString();
 
     // Save it to a file
-    $result->saveToFile(__DIR__.'/qrcode.png');
+    // use uniqid() to generate random indentifiers to prevent overwriting.
+    $result->saveToFile(__DIR__.'/qr-folder/'. uniqid() . '.png');
 
     // Generate a data URI to include image data inline (i.e. inside an <img> tag)
     $dataUri = $result->getDataUri();
